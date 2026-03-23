@@ -10,7 +10,7 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: "BeeClean - AI Storage Cleanup",
-  description: "Smart AI that removes duplicates, compresses files, and frees up space — automatically.",
+  description: "Smart AI that removes duplicates, compresses files, and frees up space automatically.",
 };
 
 export default function RootLayout({

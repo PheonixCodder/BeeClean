@@ -1,7 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+const Icon = dynamic(() => import("@iconify/react").then((mod) => mod.Icon), {
+  ssr: false,
+});
 
 export default function CTA() {
   return (
@@ -36,17 +41,36 @@ export default function CTA() {
             <br />
             Download BeeClean today.
           </motion.p>
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-amber-900 text-yellow-400 px-12 py-5 text-xl font-bold rounded-full relative z-10"
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10"
           >
-            Get Started Now
-          </motion.button>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-amber-200 text-black px-8 py-4 rounded-lg flex items-center gap-3 shadow-lg transition-all cursor-pointer"
+            >
+              <Icon icon="logos:apple-app-store" className="w-10 h-10" />
+              <div className="text-left">
+                <div className="text-xs opacity-75">Download on the</div>
+                <div className="text-sm font-bold">App Store</div>
+              </div>
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-amber-200 text-black px-8 py-4 rounded-lg flex items-center gap-3 shadow-lg transition-all cursor-pointer"
+            >
+              <Icon icon="logos:google-play-icon" className="w-10 h-10" />
+              <div className="text-left">
+                <div className="text-xs opacity-75">Get it on</div>
+                <div className="text-sm font-bold">Google Play</div>
+              </div>
+            </motion.a>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, rotate: 0 }}
             animate={{ opacity: 0.2, rotate: [0, 10, -10, 0] }}
