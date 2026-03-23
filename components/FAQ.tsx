@@ -32,7 +32,7 @@ function FAQItem({ question, answer, isActive, onClick }: FAQItemProps) {
     >
       <motion.button
         whileTap={{ scale: 0.98 }}
-        className="w-full p-6 flex justify-between items-center text-left"
+        className="w-full p-6 flex justify-between items-center text-left cursor-pointer"
         onClick={onClick}
       >
         <span className="text-lg font-bold">{question}</span>

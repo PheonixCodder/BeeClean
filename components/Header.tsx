@@ -37,12 +37,12 @@ export default function Header() {
               (item, i) => (
                 <motion.a
                   key={item}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
+                  href={`#${item.toLowerCase().replaceAll(" ", "-")}`}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 * i }}
                   whileHover={{ y: -3 }}
-                  className="text-gray-600 font-semibold hover:text-gray-900 transition-colors"
+                  className="text-gray-600 font-semibold hover:text-gray-900 transition-colors cursor-pointer"
                 >
                   {item}
                 </motion.a>

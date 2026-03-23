@@ -76,7 +76,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-bold text-sm mb-6"
           >
             <Icon icon="lucide:sparkles" className="w-4 h-4" />
-            New AI Engine 2.0
+            New AI Engine
           </motion.div>
 
           <motion.h1
@@ -100,7 +100,7 @@ export default function Hero() {
             className="text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
             Smart AI that removes duplicates, compresses files, and frees up
-            space — automatically. Meet your phone&apos;s new best friend.
+            space automatically. Meet your phone&apos;s new best friend.
           </motion.p>
 
           <motion.div
