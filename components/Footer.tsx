@@ -39,8 +39,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-16">
-      <div className="container mx-auto px-6">
+    <footer className="relative bg-gradient-to-b from-gray-50 to-white border-t border-gray-200 py-16 overflow-hidden">
+      {/* Decorative pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 honeycomb-pattern" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -56,40 +61,37 @@ export default function Footer() {
         >
           {/* Brand Column */}
           <motion.div variants={fadeInUp} className="col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center">
-                <Icon icon="lucide:bug" className="w-5 h-5 text-amber-900" />
-              </div>
-              <span className="text-2xl font-bold">BeeClean</span>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 mb-4"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 10 }}
+                className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-xl flex items-center justify-center shadow-lg"
+              >
+                <Icon icon="lucide:bug" className="w-6 h-6 text-amber-900" />
+              </motion.div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                BeeClean
+              </span>
+            </motion.div>
+            <p className="text-gray-600 text-sm leading-relaxed mb-6 max-w-xs">
               Smart AI that removes duplicates, compresses files, and frees up space automatically.
             </p>
             <div className="flex gap-4">
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors cursor-pointer"
-              >
-                <Icon icon="lucide:twitter" className="w-5 h-5 text-gray-700" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors cursor-pointer"
-              >
-                <Icon icon="lucide:facebook" className="w-5 h-5 text-gray-700" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                href="#"
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors cursor-pointer"
-              >
-                <Icon icon="lucide:instagram" className="w-5 h-5 text-gray-700" />
-              </motion.a>
+              {['twitter', 'facebook', 'instagram'].map((social) => (
+                <motion.a
+                  key={social}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="#"
+                  className="w-10 h-10 bg-gray-100 hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-500 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
+                >
+                  <Icon icon={`lucide:${social}`} className="w-5 h-5 text-gray-600 group-hover:text-white" />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 

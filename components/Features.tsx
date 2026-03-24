@@ -29,7 +29,7 @@ const slideInRight = {
 export default function Features() {
   return (
     <section id="features" className="py-32">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative">
         {/* Feature 1: Duplicate Detection */}
         <motion.div
           initial="hidden"
@@ -44,60 +44,106 @@ export default function Features() {
           }}
           className="grid md:grid-cols-2 gap-20 items-center mb-20"
         >
+          {/* Decorative background */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 0.08, scale: 1 }}
+            viewport={{ once: true }}
+            className="absolute -right-32 top-32 w-96 h-96 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full blur-3xl hidden lg:block"
+          />
           <motion.div variants={slideInLeft}>
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-bold mb-4">
-              <Icon icon="lucide:copy" className="w-4 h-4" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 px-4 py-2 rounded-full font-bold mb-4 border border-blue-200"
+            >
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Icon icon="lucide:copy" className="w-4 h-4" />
+              </motion.div>
               Duplicate Detection
-            </div>
-            <h3 className="text-3xl font-bold mb-6">
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent"
+            >
               Never look at the same photo twice.
-            </h3>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-lg text-gray-600 leading-relaxed"
+            >
               Our smart AI scans your entire gallery to find exact and similar
               duplicates. Keep the best shot, automatically remove the rest,
               and reclaim gigabytes of space in seconds.
-            </p>
+            </motion.p>
           </motion.div>
           <motion.div variants={slideInRight} className="relative">
-            <div className="bg-blue-100 rounded-2xl p-10">
-              <div className="bg-white rounded-2xl shadow-lg max-w-sm mx-auto border-8 border-gray-900">
+            <motion.div
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="bg-blue-100 rounded-2xl p-10"
+            >
+              <motion.div
+                whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)" }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="bg-white rounded-2xl shadow-lg max-w-sm mx-auto border-8 border-gray-900"
+              >
                 <div className="bg-gray-50 rounded-xl h-[400px] p-6 flex flex-col gap-4">
                   <div className="font-bold text-lg text-blue-700">
                     Similar Photos
                   </div>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-gray-200 h-24 rounded-lg border-2 border-yellow-400 relative">
-                      <div className="absolute top-2 right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+                    <motion.div
+                      whileHover={{ scale: 1.05, borderColor: "rgb(250, 204, 21)" }}
+                      className="bg-gray-200 h-24 rounded-lg border-2 border-yellow-400 relative transition-colors"
+                    >
+                      <div className="absolute top-2 right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center shadow-sm">
                         <Icon
                           icon="lucide:check"
                           className="w-3 h-3 text-black"
                         />
                       </div>
-                    </div>
+                    </motion.div>
                     <div className="bg-gray-200 h-24 rounded-lg opacity-50"></div>
                     <div className="bg-gray-200 h-24 rounded-lg opacity-50"></div>
                     <div className="bg-gray-200 h-24 rounded-lg opacity-50"></div>
                   </div>
-                  <div className="mt-auto bg-yellow-400 text-center py-4 rounded-xl font-bold text-base">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="mt-auto bg-yellow-400 text-center py-4 rounded-xl font-bold text-base shadow-sm"
+                  >
                     Keep 1 Best Photo
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ scale: 1.1 }}
+                className="absolute bottom-4 left-0"
               >
                 <Image
                   src="https://storage.googleapis.com/banani-generated-images/generated-images/5fa8cc53-14f4-4294-977f-f7f9f41d4dd8.jpg"
                   alt="Happy Bee"
                   width={120}
                   height={120}
-                  className="absolute bottom-4 left-0 rounded-full shadow-md border-4 border-white"
+                  className="rounded-full shadow-xl border-4 border-white"
                 />
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
 

@@ -47,60 +47,117 @@ export default function HowItWorks() {
           className="grid md:grid-cols-3 gap-8 mt-16"
         >
           {/* Step 1 */}
-          <motion.div variants={scaleIn} className="card text-center p-10">
+          <motion.div
+            variants={scaleIn}
+            whileHover={{ y: -10, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1)" }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="card text-center p-10 rounded-2xl border border-gray-100 bg-white cursor-pointer"
+          >
             <motion.div
-              whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-              transition={{ duration: 0.5 }}
-              className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6"
+              whileHover={{ rotate: [0, -15, 15, -10, 0], scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+              className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm"
             >
               <Icon
                 icon="lucide:scan-face"
                 className="w-8 h-8 text-blue-700"
               />
             </motion.div>
-            <h4 className="text-2xl font-bold mb-4">1. Quick Scan</h4>
-            <p className="text-gray-600">
+            <motion.h4
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-2xl font-bold mb-4 text-gray-900"
+            >
+              1. Quick Scan
+            </motion.h4>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-gray-600 leading-relaxed"
+            >
               Give BeeClean access, and it instantly scans your entire gallery
               and file system for clutter.
-            </p>
+            </motion.p>
           </motion.div>
 
           {/* Step 2 */}
-          <motion.div variants={scaleIn} className="card text-center p-10">
+          <motion.div
+            variants={scaleIn}
+            whileHover={{ y: -10, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1)" }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="card text-center p-10 rounded-2xl border border-gray-100 bg-white cursor-pointer"
+          >
             <motion.div
-              whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-              transition={{ duration: 0.5 }}
-              className="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6"
+              whileHover={{ rotate: [0, -15, 15, -10, 0], scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+              className="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm"
             >
               <Icon
                 icon="lucide:brain-circuit"
                 className="w-8 h-8 text-purple-700"
               />
             </motion.div>
-            <h4 className="text-2xl font-bold mb-4">2. AI Detection</h4>
-            <p className="text-gray-600">
+            <motion.h4
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-2xl font-bold mb-4 text-gray-900"
+            >
+              2. AI Detection
+            </motion.h4>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-gray-600 leading-relaxed"
+            >
               Our smart algorithms identify duplicates, large videos, and
               blurry photos that are safe to remove.
-            </p>
+            </motion.p>
           </motion.div>
 
           {/* Step 3 */}
-          <motion.div variants={scaleIn} className="card text-center p-10">
+          <motion.div
+            variants={scaleIn}
+            whileHover={{ y: -10, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1)" }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="card text-center p-10 rounded-2xl border border-gray-100 bg-white cursor-pointer"
+          >
             <motion.div
-              whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-              transition={{ duration: 0.5 }}
-              className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6"
+              whileHover={{ rotate: [0, -15, 15, -10, 0], scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+              className="w-20 h-20 bg-gradient-to-br from-green-100 to-green-50 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm"
             >
               <Icon
                 icon="lucide:sparkles"
                 className="w-8 h-8 text-green-700"
               />
             </motion.div>
-            <h4 className="text-2xl font-bold mb-4">3. Instant Cleanup</h4>
-            <p className="text-gray-600">
+            <motion.h4
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-2xl font-bold mb-4 text-gray-900"
+            >
+              3. Instant Cleanup
+            </motion.h4>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-gray-600 leading-relaxed"
+            >
               Review the suggestions and tap clean. Reclaim gigabytes of space
               in just a few seconds.
-            </p>
+            </motion.p>
           </motion.div>
         </motion.div>
       </div>

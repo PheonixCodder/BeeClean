@@ -55,12 +55,50 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="pt-44 pb-20 bg-gradient-to-b from-white to-yellow-50 relative overflow-hidden"
+      className="pt-44 pb-20 bg-gradient-to-br from-white via-yellow-50 to-blue-50 relative overflow-hidden"
     >
-      <motion.div
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="absolute inset-0 z-0"
-      />
+      {/* Animated background blobs */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute -top-40 -right-40 w-96 h-96 bg-blue-200 opacity-20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 80, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-200 opacity-20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, 60, 0],
+            y: [0, -60, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-200 opacity-10 rounded-full blur-3xl"
+        />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -110,17 +148,19 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(255, 216, 77, 0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary px-8 py-4 text-lg font-bold rounded-full flex items-center justify-center gap-3 shadow-lg"
+              className="btn-primary px-8 py-4 text-lg font-bold rounded-full flex items-center justify-center gap-3 shadow-lg transition-shadow"
             >
+              <Icon icon="lucide:sparkles" className="w-5 h-5" />
               Start Cleaning
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, backgroundColor: "var(--card)" }}
               whileTap={{ scale: 0.95 }}
-              className="btn-secondary px-8 py-4 text-lg font-bold rounded-full flex items-center justify-center gap-3"
+              className="btn-secondary px-8 py-4 text-lg font-bold rounded-full flex items-center justify-center gap-3 border-2 shadow-sm hover:shadow-md transition-all"
             >
+              <Icon icon="lucide:play" className="w-5 h-5" />
               See How It Works
             </motion.button>
           </motion.div>
@@ -136,38 +176,64 @@ export default function Hero() {
         >
           {/* Floating Elements */}
           <motion.div
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            animate={{
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="floating-element"
             style={{ top: "10%", left: "5%" }}
           >
-            <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-              <Icon icon="lucide:image" className="w-6 h-6 text-blue-600" />
-            </div>
-            <div className="text-left">
-              <div className="font-bold text-sm">Images Cleaner</div>
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center shadow-md border border-blue-100"
+            >
+              <Icon icon="lucide:image" className="w-7 h-7 text-blue-600" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="text-left"
+            >
+              <div className="font-bold text-sm text-gray-800">Images Cleaner</div>
               <div className="text-gray-500 text-xs">2.4 GB found</div>
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            animate={{ y: [0, 15, 0] }}
+            animate={{
+              y: [0, 20, 0],
+              x: [0, -10, 0],
+            }}
             transition={{
-              duration: 3.5,
+              duration: 4.5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 0.5,
+              delay: 0.7,
             }}
             className="floating-element"
             style={{ top: "40%", right: "5%" }}
           >
-            <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-              <Icon icon="lucide:video" className="w-6 h-6 text-purple-600" />
-            </div>
-            <div className="text-left">
-              <div className="font-bold text-sm">Video Cleaner</div>
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl flex items-center justify-center shadow-md border border-purple-100"
+            >
+              <Icon icon="lucide:video" className="w-7 h-7 text-purple-600" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="text-left"
+            >
+              <div className="font-bold text-sm text-gray-800">Video Cleaner</div>
               <div className="text-gray-500 text-xs">5.1 GB found</div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Main Bee Image */}
@@ -183,22 +249,55 @@ export default function Hero() {
             style={{ maxWidth: "300px" }}
           >
             <motion.div
-              animate={{ y: [-10, 10, -10] }}
+              animate={{
+                y: [-15, 15, -15],
+                rotate: [0, 5, -5, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              whileHover={{
+                scale: 1.1,
+                rotate: 0,
+                transition: { duration: 0.3 },
+              }}
+            >
+              <motion.div
+                animate={{
+                  boxShadow: [
+                    "0 20px 40px -10px rgba(0, 0, 0, 0.1)",
+                    "0 30px 60px -15px rgba(255, 200, 0, 0.3)",
+                    "0 20px 40px -10px rgba(0, 0, 0, 0.1)",
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="rounded-full"
+              >
+                <Image
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/48ab1ee7-0e8d-43f3-a4cc-62c4b5e52dd0.jpg"
+                  alt="Tired Bee Mascot"
+                  width={300}
+                  height={300}
+                  className="rounded-full shadow-2xl mx-auto"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+            {/* Glowing ring effect */}
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.1, 0.3],
+              }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-            >
-              <Image
-                src="https://storage.googleapis.com/banani-generated-images/generated-images/48ab1ee7-0e8d-43f3-a4cc-62c4b5e52dd0.jpg"
-                alt="Tired Bee Mascot"
-                width={300}
-                height={300}
-                className="rounded-full shadow-lg mx-auto"
-                priority
-              />
-            </motion.div>
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-200 to-orange-200 blur-2xl -z-10"
+            />
           </motion.div>
 
           {/* Storage Mockup */}
@@ -207,34 +306,75 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3, ease: "easeOut" }}
           >
-            <div className="storage-mockup">
-              <div className="flex justify-between items-center mb-2">
-                <div className="font-bold text-lg">Storage Almost Full</div>
-                <div className="text-red-700 font-bold">95%</div>
+            <motion.div
+              transition={{ type: "spring", stiffness: 300 }}
+              className="storage-mockup"
+            >
+              <div className="flex justify-between items-center mb-3">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.5 }}
+                  className="font-bold text-lg text-gray-900"
+                >
+                  Storage Almost Full
+                </motion.div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.7, type: "spring" }}
+                  className="text-red-600 font-bold text-lg px-3 py-1 bg-red-50 rounded-full"
+                >
+                  95%
+                </motion.div>
               </div>
               <div className="text-gray-600 text-sm mb-4 text-left">
-                BeeClean can free up 14.5 GB right now.
+                BeeClean can free up{" "}
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.9 }}
+                  className="font-bold text-green-600"
+                >
+                  14.5 GB
+                </motion.span>{" "}
+                right now.
               </div>
-              <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
+              <div className="h-4 bg-gradient-to-r from-gray-200 to-gray-100 rounded-full overflow-hidden flex shadow-inner">
                 <motion.div
                   initial={{ width: "0%" }}
                   animate={{ width: "85%" }}
-                  transition={{ duration: 1.5, delay: 1.5, ease: "easeOut" }}
-                  className="bg-red-400"
+                  transition={{ duration: 1.5, delay: 2, ease: "easeOut" }}
+                  className="bg-gradient-to-r from-red-400 to-red-300 shadow-sm"
                 />
-                <div className="bg-yellow-400" style={{ width: "15%" }}></div>
+                <motion.div
+                  initial={{ width: "0%" }}
+                  animate={{ width: "15%" }}
+                  transition={{ duration: 1, delay: 2.2, ease: "easeOut" }}
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-300"
+                />
+              </div>
+              <div className="flex justify-between items-center mt-3 text-xs text-gray-500">
+                <span>Used: 85%</span>
+                <span>Free: 15%</span>
               </div>
               <motion.button
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.7 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="btn-primary w-full mt-6 py-3 text-base"
+                transition={{ duration: 0.6, delay: 2.4 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 30px -5px rgba(255, 216, 77, 0.5)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary w-full mt-6 py-4 text-base font-bold shadow-lg hover:shadow-xl transition-shadow"
               >
-                Clean 14.5 GB
+                <span className="flex items-center justify-center gap-2">
+                  <Icon icon="lucide:sparkles" className="w-5 h-5" />
+                  Clean 14.5 GB Now
+                </span>
               </motion.button>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

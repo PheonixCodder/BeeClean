@@ -88,6 +88,42 @@ section {
   scroll-margin-top: 100px;
 }
 
+/* Honeycomb pattern */
+.honeycomb-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 15V45L30 60L0 45V15z' fill='none' stroke='%23FFD84D' stroke-width='1' opacity='0.1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Dotted pattern */
+.dotted-pattern {
+  background-image: radial-gradient(circle, rgba(255, 216, 77, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Gradient mesh effect */
+.mesh-gradient {
+  background:
+    radial-gradient(at 40% 20%, rgba(255, 216, 77, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(224, 242, 254, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(209, 234, 229, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(243, 232, 255, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(224, 242, 254, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, rgba(255, 216, 77, 0.05) 0px, transparent 50%);
+}
+
+/* Glowing shadow effect */
+.glow-shadow {
+  box-shadow: 0 0 40px -10px rgba(255, 216, 77, 0.3);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #FFD84D 0%, #F59E0B 50%, #FFD84D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 @media (min-width: 640px) {
   .container {
     padding: 0 48px;
