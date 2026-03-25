@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useScroll } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const Icon = dynamic(() => import("@iconify/react").then((mod) => mod.Icon), {
@@ -8,8 +9,23 @@ const Icon = dynamic(() => import("@iconify/react").then((mod) => mod.Icon), {
 });
 
 export default function Header() {
+  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = scrollY.onChange((latest) => {
+      setScrolled(latest > 50);
+    });
+    return () => unsubscribe();
+  }, [scrollY]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md">
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-xl border-gray-100" : "bg-transparent backdrop-blur-md"}`}
+    >
       <div className="container p-[30px]! mx-auto px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -50,10 +66,10 @@ export default function Header() {
             )}
           </nav>
           <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 20px 40px -10px rgba(255, 216, 77, 0.4)",
+            }}
             whileTap={{ scale: 0.95 }}
             className="btn-primary px-6 py-3 text-base font-bold rounded-full"
           >
@@ -61,6 +77,6 @@ export default function Header() {
           </motion.button>
         </motion.div>
       </div>
-    </header>
+    </motion.header>
   );
 }

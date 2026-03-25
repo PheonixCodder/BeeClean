@@ -28,21 +28,26 @@ function FAQItem({ question, answer, isActive, onClick }: FAQItemProps) {
   return (
     <motion.div
       variants={scaleIn}
-      className={`border rounded-xl overflow-hidden ${isActive ? "border-gray-200 bg-white shadow-md" : "border-gray-200 bg-white"}`}
+      className={`relative rounded-xl overflow-hidden transition-all duration-300 ${
+        isActive
+          ? "bg-gradient-to-br from-white to-gray-50 shadow-lg border-2 border-blue-100"
+          : "bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-gray-300 hover:shadow-md"
+      }`}
     >
       <motion.button
         whileTap={{ scale: 0.98 }}
         className="w-full p-6 flex justify-between items-center text-left cursor-pointer"
         onClick={onClick}
       >
-        <span className="text-lg font-bold">{question}</span>
+        <span className="text-lg font-bold text-gray-900">{question}</span>
         <motion.div
           animate={{ rotate: isActive ? 180 : 0 }}
           transition={{ duration: 0.3 }}
+          className="text-blue-600"
         >
           <Icon
             icon="lucide:chevron-down"
-            className="w-6 h-6 text-gray-500"
+            className="w-6 h-6"
           />
         </motion.div>
       </motion.button>
@@ -61,6 +66,16 @@ function FAQItem({ question, answer, isActive, onClick }: FAQItemProps) {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Decorative accent */}
+      {isActive && (
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: "100%" }}
+          exit={{ width: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"
+        />
+      )}
     </motion.div>
   );
 }
